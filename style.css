@@ -10,3 +10,37 @@
 .secret-input::selection{background:rgba(80,80,80,.18)}
 .secret-placeholder{position:absolute;left:16px;top:17px;color:#aaa;pointer-events:none;font-size:14px}
 .secret-placeholder[hidden]{display:none}
+
+/* Mobile-first phone layout: no sideways canvas or page zoom required. */
+html{width:100%;min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body,#app{width:100%;min-width:0;max-width:100%;overflow-x:clip}
+.shell{width:100%;min-width:0;max-width:820px}
+.shell>*,.panel,.top,.spaced,.actions,.secret-editor,.notes,.note{min-width:0;max-width:100%}
+input,select,textarea,button{max-width:100%;min-width:0}
+.field{font-size:16px}
+.secret-editor{width:100%;height:clamp(300px,48dvh,520px);min-height:300px;max-width:100%;isolation:isolate}
+.secret-glyphs,.secret-input{font-size:16px;line-height:1.65;overflow-wrap:anywhere;word-break:normal}
+.secret-input{resize:none;-webkit-user-select:text;user-select:text}
+.glyphline .symbol{width:1em;height:1em;vertical-align:-.13em}
+@media(max-width:600px){
+ .shell{max-width:100%;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(28px + env(safe-area-inset-bottom,0px))}
+ .top{gap:10px;margin-bottom:20px;flex-wrap:wrap}
+ .brand{font-size:17px}
+ .panel{padding:18px 16px;border-radius:17px}
+ h1{font-size:clamp(28px,8vw,36px);letter-spacing:-1.2px}
+ h2{font-size:22px}
+ .btn{min-height:44px;padding:11px 13px;font-size:14px}
+ .btn.tiny{min-height:40px;font-size:13px}
+ .actions{gap:8px}
+ .notes{grid-template-columns:minmax(0,1fr)}
+ .note{min-height:90px}
+ .alphabet{grid-template-columns:repeat(auto-fit,minmax(57px,1fr))}
+ .tile{padding:7px 4px}
+ .tile .symbol{max-width:100%;width:34px;height:34px}
+ .drawing{height:min(45dvh,270px);min-height:185px}
+ .secret-editor{height:clamp(300px,48dvh,480px)}
+ .secret-glyphs,.secret-input{padding:14px;font-size:16px;line-height:1.6}
+ .secret-placeholder{left:14px;top:15px}
+ .auth{margin-top:5dvh}
+}
+@media(max-width:360px){.shell{padding-left:12px;padding-right:12px}.panel{padding:15px 12px}.btn{padding:10px}}
